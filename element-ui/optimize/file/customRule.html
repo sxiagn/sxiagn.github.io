@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>自定义表单校验规则 | 踩坑小能手</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <meta name="description" content="前端后台管理项目踩坑总结">
+    
+    <link rel="preload" href="/assets/css/0.styles.0caf9dae.css" as="style"><link rel="preload" href="/assets/js/app.acb8ee5f.js" as="script"><link rel="preload" href="/assets/js/2.0bea04e2.js" as="script"><link rel="preload" href="/assets/js/10.6e3fa9d0.js" as="script"><link rel="prefetch" href="/assets/js/11.abd22f9f.js"><link rel="prefetch" href="/assets/js/12.11c540ec.js"><link rel="prefetch" href="/assets/js/13.af303160.js"><link rel="prefetch" href="/assets/js/3.ab60602e.js"><link rel="prefetch" href="/assets/js/4.94e41b44.js"><link rel="prefetch" href="/assets/js/5.e3e26b27.js"><link rel="prefetch" href="/assets/js/6.1b2a9767.js"><link rel="prefetch" href="/assets/js/7.5872789b.js"><link rel="prefetch" href="/assets/js/8.1af00565.js"><link rel="prefetch" href="/assets/js/9.5b310647.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0caf9dae.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">踩坑小能手</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Element-UI相关" class="dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="Element-UI相关" class="mobile-dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/element-ui/pit/" class="nav-link">
+  Element-UI踩坑
+</a></li><li class="dropdown-item"><!----> <a href="/element-ui/optimize/" class="nav-link router-link-active">
+  Element-UI优化
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Element-UI相关" class="dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="Element-UI相关" class="mobile-dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/element-ui/pit/" class="nav-link">
+  Element-UI踩坑
+</a></li><li class="dropdown-item"><!----> <a href="/element-ui/optimize/" class="nav-link router-link-active">
+  Element-UI优化
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Element-UI优化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/element-ui/optimize/file/customIcon.html" class="sidebar-link">自定义icon图标</a></li><li><a href="/element-ui/optimize/file/customRule.html" aria-current="page" class="active sidebar-link">自定义表单校验规则</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/element-ui/optimize/file/manyRules.html" class="sidebar-link">表单校验不通过，滚动到第一个位置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="自定义表单校验规则"><a href="#自定义表单校验规则" class="header-anchor">#</a> 自定义表单校验规则</h1> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 示列表单html结构</span>
+<span class="token operator">&lt;</span>el<span class="token operator">-</span>form <span class="token operator">:</span>model<span class="token operator">=</span><span class="token string">&quot;formData&quot;</span> <span class="token operator">:</span>rules<span class="token operator">=</span><span class="token string">&quot;rulesForm&quot;</span> ref<span class="token operator">=</span><span class="token string">&quot;ruleForm&quot;</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;demo-ruleForm&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>el<span class="token operator">-</span>form<span class="token operator">-</span>item label<span class="token operator">=</span><span class="token string">&quot;姓名&quot;</span> prop<span class="token operator">=</span><span class="token string">&quot;name&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>el<span class="token operator">-</span>input v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;formData.name&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>input<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>form<span class="token operator">-</span>item<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>el<span class="token operator">-</span>form<span class="token operator">-</span>item<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>el<span class="token operator">-</span>button type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span> @click<span class="token operator">=</span><span class="token string">&quot;submitForm('ruleForm')&quot;</span><span class="token operator">&gt;</span>确认<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>button<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>form<span class="token operator">-</span>item<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>form<span class="token operator">&gt;</span>
+
+<span class="token comment">// 表单校验规则建议放在computed（放在data，在国际化项目切换语言时data的值不更新）</span>
+computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">rulesForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> <span class="token function-variable function">nameRule</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">rule<span class="token punctuation">,</span> value<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'请输入姓名'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span> required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> validator<span class="token operator">:</span> nameRule<span class="token punctuation">,</span> trigger<span class="token operator">:</span> <span class="token string">'blur'</span> <span class="token punctuation">}</span>
+          <span class="token comment">// { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: ['change', 'blur'] }</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><h5 id="参数说明"><a href="#参数说明" class="header-anchor">#</a> 参数说明</h5> <ul><li>required为布尔值，控制表单元素是否必填</li> <li>validater为自定义方法</li> <li>trigger为校验的触发方式，blur为失焦，可以有多种触发方式</li> <li>trigger: ['blur', 'change'] 指的是失焦或者change事件都会触发校验</li> <li>当然，nameRule也可以当成方法写在methods里面，这样调用 validator: this.nameRule，不需要加()</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/element-ui/optimize/file/customIcon.html" class="prev">
+        自定义icon图标
+      </a></span> <span class="next"><a href="/element-ui/optimize/file/manyRules.html">
+        表单校验不通过，滚动到第一个位置
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.acb8ee5f.js" defer></script><script src="/assets/js/2.0bea04e2.js" defer></script><script src="/assets/js/10.6e3fa9d0.js" defer></script>
+  </body>
+</html>

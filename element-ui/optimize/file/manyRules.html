@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>表单校验不通过，滚动到第一个位置 | 踩坑小能手</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <meta name="description" content="前端后台管理项目踩坑总结">
+    
+    <link rel="preload" href="/assets/css/0.styles.0caf9dae.css" as="style"><link rel="preload" href="/assets/js/app.acb8ee5f.js" as="script"><link rel="preload" href="/assets/js/2.0bea04e2.js" as="script"><link rel="preload" href="/assets/js/11.abd22f9f.js" as="script"><link rel="prefetch" href="/assets/js/10.6e3fa9d0.js"><link rel="prefetch" href="/assets/js/12.11c540ec.js"><link rel="prefetch" href="/assets/js/13.af303160.js"><link rel="prefetch" href="/assets/js/3.ab60602e.js"><link rel="prefetch" href="/assets/js/4.94e41b44.js"><link rel="prefetch" href="/assets/js/5.e3e26b27.js"><link rel="prefetch" href="/assets/js/6.1b2a9767.js"><link rel="prefetch" href="/assets/js/7.5872789b.js"><link rel="prefetch" href="/assets/js/8.1af00565.js"><link rel="prefetch" href="/assets/js/9.5b310647.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0caf9dae.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">踩坑小能手</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Element-UI相关" class="dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="Element-UI相关" class="mobile-dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/element-ui/pit/" class="nav-link">
+  Element-UI踩坑
+</a></li><li class="dropdown-item"><!----> <a href="/element-ui/optimize/" class="nav-link router-link-active">
+  Element-UI优化
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Element-UI相关" class="dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="Element-UI相关" class="mobile-dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/element-ui/pit/" class="nav-link">
+  Element-UI踩坑
+</a></li><li class="dropdown-item"><!----> <a href="/element-ui/optimize/" class="nav-link router-link-active">
+  Element-UI优化
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Element-UI优化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/element-ui/optimize/file/customIcon.html" class="sidebar-link">自定义icon图标</a></li><li><a href="/element-ui/optimize/file/customRule.html" class="sidebar-link">自定义表单校验规则</a></li><li><a href="/element-ui/optimize/file/manyRules.html" aria-current="page" class="active sidebar-link">表单校验不通过，滚动到第一个位置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="表单校验不通过-滚动到第一个位置"><a href="#表单校验不通过-滚动到第一个位置" class="header-anchor">#</a> 表单校验不通过，滚动到第一个位置</h1> <ul><li>作为产品，希望表单校验不通过时，页面滚动到第一个不通过校验的表单元素（比如input标签）。</li> <li>正常情况前端无需额外处理，表单校验不通过会在表单元素底部有文字提示。</li> <li>多表单元素时，比如整个表单跨度占满一屏幕，校验不通过页面没反应，体验不好。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 第一步：给需要检验的表单添加都ref属性，名字跟prop绑定的一致</span>
+<span class="token operator">&lt;</span>el<span class="token operator">-</span>form<span class="token operator">-</span>item label<span class="token operator">=</span><span class="token string">&quot;活动形式&quot;</span> prop<span class="token operator">=</span><span class="token string">&quot;desc&quot;</span> ref<span class="token operator">=</span><span class="token string">&quot;desc&quot;</span><span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>el<span class="token operator">-</span>input type<span class="token operator">=</span><span class="token string">&quot;textarea&quot;</span>  v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;ruleForm.desc&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>input<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>form<span class="token operator">-</span>item<span class="token operator">&gt;</span>
+
+<span class="token comment">// 第二步：validate方法传入第二个参数object</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span>formName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">valid<span class="token punctuation">,</span> object</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>valid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'校验通过'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 传入validate的第二个参数：object</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> i <span class="token keyword">in</span> object<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> dom <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>dom<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token string">'[object Object]'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+                <span class="token comment">// 这里是针对遍历的情况（多个输入框），取值为数组</span>
+                dom <span class="token operator">=</span> dom<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 滚动到指定节点</span>
+            dom<span class="token punctuation">.</span>$el<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                block<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span> <span class="token comment">// 值有start,center,end，nearest，当前显示在视图区域中间</span>
+                behavior<span class="token operator">:</span> <span class="token string">'smooth'</span> <span class="token comment">// 值有auto、instant,smooth，缓动动画（当前是慢速的）</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span> <span class="token comment">// 因为我们只需要检测一项,所以就可以跳出循环了</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/element-ui/optimize/file/customRule.html" class="prev">
+        自定义表单校验规则
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.acb8ee5f.js" defer></script><script src="/assets/js/2.0bea04e2.js" defer></script><script src="/assets/js/11.abd22f9f.js" defer></script>
+  </body>
+</html>

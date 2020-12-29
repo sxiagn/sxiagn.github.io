@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>自定义icon图标 | 踩坑小能手</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <meta name="description" content="前端后台管理项目踩坑总结">
+    
+    <link rel="preload" href="/assets/css/0.styles.0caf9dae.css" as="style"><link rel="preload" href="/assets/js/app.acb8ee5f.js" as="script"><link rel="preload" href="/assets/js/2.0bea04e2.js" as="script"><link rel="preload" href="/assets/js/9.5b310647.js" as="script"><link rel="prefetch" href="/assets/js/10.6e3fa9d0.js"><link rel="prefetch" href="/assets/js/11.abd22f9f.js"><link rel="prefetch" href="/assets/js/12.11c540ec.js"><link rel="prefetch" href="/assets/js/13.af303160.js"><link rel="prefetch" href="/assets/js/3.ab60602e.js"><link rel="prefetch" href="/assets/js/4.94e41b44.js"><link rel="prefetch" href="/assets/js/5.e3e26b27.js"><link rel="prefetch" href="/assets/js/6.1b2a9767.js"><link rel="prefetch" href="/assets/js/7.5872789b.js"><link rel="prefetch" href="/assets/js/8.1af00565.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0caf9dae.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">踩坑小能手</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Element-UI相关" class="dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="Element-UI相关" class="mobile-dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/element-ui/pit/" class="nav-link">
+  Element-UI踩坑
+</a></li><li class="dropdown-item"><!----> <a href="/element-ui/optimize/" class="nav-link router-link-active">
+  Element-UI优化
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Element-UI相关" class="dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="Element-UI相关" class="mobile-dropdown-title"><span class="title">Element-UI相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/element-ui/pit/" class="nav-link">
+  Element-UI踩坑
+</a></li><li class="dropdown-item"><!----> <a href="/element-ui/optimize/" class="nav-link router-link-active">
+  Element-UI优化
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Element-UI优化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/element-ui/optimize/file/customIcon.html" aria-current="page" class="active sidebar-link">自定义icon图标</a></li><li><a href="/element-ui/optimize/file/customRule.html" class="sidebar-link">自定义表单校验规则</a></li><li><a href="/element-ui/optimize/file/manyRules.html" class="sidebar-link">表单校验不通过，滚动到第一个位置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="自定义icon图标"><a href="#自定义icon图标" class="header-anchor">#</a> 自定义icon图标</h1> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 准备自定义icon的样式</span>
+<span class="token punctuation">.</span>el<span class="token operator">-</span>icon<span class="token operator">-</span><span class="token keyword">new</span><span class="token punctuation">{</span>
+    background<span class="token operator">:</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token string">'./assets/images/small.png'</span><span class="token punctuation">)</span> center no<span class="token operator">-</span>repeat<span class="token punctuation">;</span> 
+    <span class="token comment">// 图标路径，最好准备png格式</span>
+    background<span class="token operator">-</span>size<span class="token operator">:</span> cover<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token punctuation">.</span>el<span class="token operator">-</span>icon<span class="token operator">-</span><span class="token keyword">new</span><span class="token operator">:</span>before<span class="token punctuation">{</span>
+    content<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    font<span class="token operator">-</span>size<span class="token operator">:</span> <span class="token number">24</span>px<span class="token punctuation">;</span> <span class="token comment">// 控制图标的大小</span>
+    visibility<span class="token operator">:</span> hidden<span class="token punctuation">;</span> <span class="token comment">// 元素占位置，但不可见</span>
+ <span class="token punctuation">}</span>
+ 
+<span class="token comment">// 在html中使用</span>
+<span class="token operator">&lt;</span>el<span class="token operator">-</span>button icon<span class="token operator">=</span><span class="token string">&quot;el-icon-new&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>button<span class="token operator">&gt;</span>
+<span class="token comment">// 或者</span>
+<span class="token operator">&lt;</span>i icon<span class="token operator">=</span><span class="token string">&quot;el-icon-new&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/element-ui/optimize/file/customRule.html">
+        自定义表单校验规则
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.acb8ee5f.js" defer></script><script src="/assets/js/2.0bea04e2.js" defer></script><script src="/assets/js/9.5b310647.js" defer></script>
+  </body>
+</html>
